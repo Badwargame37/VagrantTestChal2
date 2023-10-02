@@ -1,0 +1,22 @@
+Créez un fichier de script Bash, par exemple, set_secret_pass.sh, avec le contenu suivant :
+bash
+Copy code
+#!/bin/bash
+
+# Définit la variable SECRETPASS
+export SECRETPASS="VotreMotDePasseSecret"
+Assurez-vous de remplacer "VotreMotDePasseSecret" par le mot de passe réel que vous souhaitez utiliser.
+
+Donnez au fichier de script des permissions d'exécution en utilisant la commande chmod :
+bash
+Copy code
+chmod +x set_secret_pass.sh
+Placez ce fichier de script dans un emplacement partagé où tous les utilisateurs peuvent y accéder. Par exemple, vous pouvez le placer dans le répertoire /etc/profile.d/ pour qu'il soit exécuté lors de la connexion de chaque utilisateur.
+bash
+Copy code
+sudo mv set_secret_pass.sh /etc/profile.d/
+Pour que les modifications prennent effet, vous pouvez soit vous reconnecter à votre session, soit exécuter le script directement :
+bash
+Copy code
+source /etc/profile.d/set_secret_pass.sh
+Après cela, la variable d'environnement SECRETPASS sera définie pour tous les utilisateurs lorsqu'ils se connecteront à leur session. Chaque utilisateur peut y accéder en utilisant echo $SECRETPASS ou en le référençant dans des scripts ou des programmes.
